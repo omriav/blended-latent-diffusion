@@ -1,9 +1,11 @@
 # Blended Latent Diffusion
-<a href="https://arxiv.org/abs/2206.02779"><img src="https://img.shields.io/badge/arXiv-2206.02779-b31b1b.svg" height=22.5></a>
+<a href="https://arxiv.org/abs/2206.02779"><img src="https://img.shields.io/badge/arXiv-2206.02779-b31b1b.svg"></a>
+<a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg"></a>
+<a href="https://pytorch.org/"><img src="https://img.shields.io/badge/PyTorch->=1.7.0-Red?logo=pytorch"></a>
 
-<img src="docs/teaser.png" />
+<a href="https://omriavrahami.com/blended-latent-diffusion-page/"><img src="docs/teaser.png" /></a>
 
-> **Blended Latent Diffusion**
+> <a href="https://omriavrahami.com/blended-latent-diffusion-page/">**Blended Latent Diffusion**</a>
 >
 > Omri Avrahami, Ohad Fried, Dani Lischinski
 >
@@ -35,5 +37,48 @@
 ### Scribble Editing
 <img src="docs/applications/scribble_edit.png" />
 
-# Code
-The code will be released in this repository soon.
+# Installation
+Install the conda virtual environment:
+```bash
+conda env create -f environment.yaml
+conda activate ldm
+```
+
+Download the pre-trained weights (5.7GB):
+```bash
+mkdir -p models/ldm/text2img-large/
+wget -O models/ldm/text2img-large/model.ckpt https://ommer-lab.com/files/latent-diffusion/nitro/txt2img-f8-large/model.ckpt
+```
+
+# Usage
+
+## Step 1 - Generate initial predictions
+```bash
+python scripts/text_editing.py --prompt "a pink yarn ball" --init_image "inputs/img.png" --mask "inputs/mask.png"
+```
+
+The predictions will be saved in `outputs/edit_results/samples`.
+
+You can use a larger batch size by specifying `--n_samples` to the maximum number that saturates your GPU.
+
+## Step 2 (optional) - Reconstruct the original background
+If you want to reconstruct the original image background, you can run the following:
+```bash
+python scripts/reconstruct.py --init_image "inputs/img.png" --mask "inputs/mask.png" --selected_indices 0 1
+```
+
+You can choose the specific image indices that you want to reconstruct. The results will be saved in `outputs/edit_results/samples/reconstructed_optimization`.
+
+# Citation
+If you find this useful for your research, please use the following:
+```bibtex
+@article{avrahami2022blended_latent,
+        title={Blended Latent Diffusion},
+        author={Avrahami, Omri and Fried, Ohad and Lischinski, Dani},
+        journal={arXiv preprint arXiv:2206.02779},
+        year={2022}
+}
+```
+
+# Acknowledgements
+This code is based on [Latent Diffusion Models](https://github.com/CompVis/latent-diffusion).
