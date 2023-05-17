@@ -1,4 +1,5 @@
-# Blended Latent Diffusion
+# Blended Latent Diffusion [SIGGRAPH 2023]
+<a href="https://omriavrahami.com/blended-latent-diffusion-page/"><img src="https://img.shields.io/static/v1?label=Project&message=Website&color=blue"></a> 
 <a href="https://arxiv.org/abs/2206.02779"><img src="https://img.shields.io/badge/arXiv-2206.02779-b31b1b.svg"></a>
 <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg"></a>
 <a href="https://pytorch.org/"><img src="https://img.shields.io/badge/PyTorch->=1.7.0-Red?logo=pytorch"></a>
