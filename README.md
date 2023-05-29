@@ -73,13 +73,22 @@ python scripts/reconstruct.py --init_image "inputs/img.png" --mask "inputs/mask.
 You can choose the specific image indices that you want to reconstruct. The results will be saved in `outputs/edit_results/samples/reconstructed_optimization`.
 
 # Citation
-If you find this useful for your research, please use the following:
+If you find this useful for your research, please cite the following:
 ```bibtex
 @article{avrahami2022blended_latent,
         title={Blended Latent Diffusion},
         author={Avrahami, Omri and Fried, Ohad and Lischinski, Dani},
         journal={arXiv preprint arXiv:2206.02779},
         year={2022}
+}
+
+@InProceedings{Avrahami_2022_CVPR,
+        author    = {Avrahami, Omri and Lischinski, Dani and Fried, Ohad},
+        title     = {Blended Diffusion for Text-Driven Editing of Natural Images},
+        booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+        month     = {June},
+        year      = {2022},
+        pages     = {18208-18218}
 }
 ```
 
