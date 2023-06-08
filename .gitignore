@@ -1,3 +1,5 @@
+# Initially taken from Github's Python gitignore file
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -5,6 +7,12 @@ __pycache__/
 
 # C extensions
 *.so
+
+# tests and logs
+tests/fixtures/cached_*_text.txt
+logs/
+lightning_logs/
+lang_code_data/
 
 # Distribution / packaging
 .Python
@@ -20,8 +28,6 @@ parts/
 sdist/
 var/
 wheels/
-pip-wheel-metadata/
-share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
@@ -47,7 +53,6 @@ htmlcov/
 nosetests.xml
 coverage.xml
 *.cover
-*.py,cover
 .hypothesis/
 .pytest_cache/
 
@@ -59,7 +64,6 @@ coverage.xml
 *.log
 local_settings.py
 db.sqlite3
-db.sqlite3-journal
 
 # Flask stuff:
 instance/
@@ -84,19 +88,8 @@ ipython_config.py
 # pyenv
 .python-version
 
-# pipenv
-#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
-#   However, in case of collaboration, if having platform-specific dependencies or dependencies
-#   having no cross-platform support, pipenv may install dependencies that don't work, or not
-#   install all needed dependencies.
-#Pipfile.lock
-
-# PEP 582; used by e.g. github.com/David-OConnor/pyflow
-__pypackages__/
-
-# Celery stuff
+# celery beat schedule file
 celerybeat-schedule
-celerybeat.pid
 
 # SageMath parsed files
 *.sage.py
@@ -128,8 +121,60 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# Project stuff
+# vscode
+.vs
 .vscode
+
+# Pycharm
+.idea
+
+# TF code
+tensorflow_code
+
+# Models
+proc_data
+
+# examples
+runs
+/runs_old
+/wandb
+/examples/runs
+/examples/**/*.args
+/examples/rag/sweep
+
+# data
+/data
+serialization_dir
+
+# emacs
+*.*~
+debug.env
+
+# vim
+.*.swp
+
+#ctags
+tags
+
+# pre-commit
+.pre-commit*
+
+# .lock
+*.lock
+
+# DS_Store (MacOS)
+.DS_Store
+# RL pipelines may produce mp4 outputs
+*.mp4
+
+# dependencies
+/transformers
+
+# Project Stuff
+outputs/
+inputs/
+evaluations/
 *.ckpt
 src/
 outputs/
+models/

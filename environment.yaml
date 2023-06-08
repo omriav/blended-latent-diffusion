@@ -1,6 +1,7 @@
 name: ldm
 channels:
   - pytorch
+  - huggingface
   - conda-forge
   - defaults
 dependencies:
@@ -9,8 +10,12 @@ dependencies:
   - blas=1.0=mkl
   - brotli=1.0.9=h7f98852_5
   - brotli-bin=1.0.9=h7f98852_5
-  - ca-certificates=2021.10.8=ha878542_0
-  - certifi=2021.10.8=py38h578d9bd_2
+  - brotlipy=0.7.0=py38h27cfd23_1003
+  - ca-certificates=2023.05.30=h06a4308_0
+  - certifi=2023.5.7=py38h06a4308_0
+  - cffi=1.15.0=py38hd667e15_1
+  - click=8.0.4=py38h06a4308_0
+  - cryptography=39.0.1=py38h9ce1e76_0
   - cudatoolkit=11.0.221=h6bb024c_0
   - cycler=0.11.0=pyhd8ed1ab_0
   - dbus=1.13.18=hb2f20db_0
@@ -22,7 +27,9 @@ dependencies:
   - glib=2.69.1=h4ff587b_1
   - gst-plugins-base=1.14.0=hbbd80ab_1
   - gstreamer=1.14.0=h28cd5cc_2
+  - huggingface_hub=0.15.1=py_0
   - icu=58.2=hf484d3e_1000
+  - importlib_metadata=6.0.0=hd3eb1b0_0
   - intel-openmp=2022.0.1=h06a4308_3633
   - jpeg=9d=h7f8727e_0
   - kiwisolver=1.3.2=py38h295c915_0
@@ -35,6 +42,7 @@ dependencies:
   - libgcc-ng=9.3.0=h5101ec6_17
   - libgomp=9.3.0=h5101ec6_17
   - libpng=1.6.37=hbc83047_0
+  - libprotobuf=3.19.1=h4ff587b_0
   - libstdcxx-ng=9.3.0=hd4cf53a_17
   - libtiff=4.2.0=h85742a9_0
   - libuuid=1.0.3=h7f8727e_2
@@ -53,16 +61,17 @@ dependencies:
   - munkres=1.1.4=pyh9f0ad1d_0
   - ncurses=6.3=h7f8727e_2
   - ninja=1.10.2=py38hd09550d_3
-  - numpy=1.19.2=py38h54aff64_0
   - numpy-base=1.19.2=py38hfa32c7d_0
-  - openssl=1.1.1n=h7f8727e_0
-  - packaging=21.3=pyhd8ed1ab_0
+  - openssl=1.1.1t=h7f8727e_0
   - pcre=8.45=h9c3ff4c_0
   - pillow=9.0.1=py38h22f2fdc_0
   - pip=20.3.3=py38h06a4308_0
   - pthread-stubs=0.4=h36c2ea0_1001
+  - pycparser=2.21=pyhd3eb1b0_0
+  - pyopenssl=23.0.0=py38h06a4308_0
   - pyparsing=3.0.7=pyhd8ed1ab_0
   - pyqt=5.9.2=py38h05f1152_4
+  - pysocks=1.7.1=py38h06a4308_0
   - python=3.8.5=h7579374_1
   - python-dateutil=2.8.2=pyhd8ed1ab_0
   - python_abi=3.8=2_cp38
@@ -81,153 +90,155 @@ dependencies:
   - xorg-libxau=1.0.9=h7f98852_0
   - xorg-libxdmcp=1.1.3=h7f98852_0
   - xz=5.2.5=h7b6447c_0
+  - yaml=0.2.5=h7b6447c_0
   - zlib=1.2.11=h7f8727e_4
   - zstd=1.4.9=haebb681_0
   - pip:
-    - absl-py==1.0.0
-    - aiohttp==3.8.1
-    - aiosignal==1.2.0
-    - albumentations==0.4.3
-    - altair==4.2.0
-    - antlr4-python3-runtime==4.8
-    - argon2-cffi==21.3.0
-    - argon2-cffi-bindings==21.2.0
-    - asttokens==2.0.5
-    - async-timeout==4.0.2
-    - attrs==21.4.0
-    - backcall==0.2.0
-    - backports-zoneinfo==0.2.1
-    - beautifulsoup4==4.10.0
-    - black==22.3.0
-    - bleach==4.1.0
-    - blinker==1.4
-    - cachetools==5.0.0
-    - cffi==1.15.0
-    - charset-normalizer==2.0.12
-    - click==8.0.4
-    - dataclasses==0.6
-    - debugpy==1.6.0
-    - decorator==5.1.1
-    - defusedxml==0.7.1
-    - einops==0.3.0
-    - entrypoints==0.4
-    - executing==0.8.3
-    - fastjsonschema==2.15.3
-    - filelock==3.6.0
-    - frozenlist==1.3.0
-    - fsspec==2022.3.0
-    - ftfy==6.1.1
-    - future==0.18.2
-    - gitdb==4.0.9
-    - gitpython==3.1.27
-    - google-auth==2.6.2
-    - google-auth-oauthlib==0.4.6
-    - grpcio==1.44.0
-    - idna==3.3
-    - imageio==2.9.0
-    - imageio-ffmpeg==0.4.2
-    - imgaug==0.2.6
-    - importlib-metadata==4.11.3
-    - importlib-resources==5.6.0
-    - ipykernel==6.12.1
-    - ipython==8.2.0
-    - ipython-genutils==0.2.0
-    - ipywidgets==7.7.0
-    - jedi==0.18.1
-    - jinja2==3.1.1
-    - joblib==1.1.0
-    - jsonschema==4.4.0
-    - jupyter-client==7.2.1
-    - jupyter-core==4.9.2
-    - jupyterlab-pygments==0.1.2
-    - jupyterlab-widgets==1.1.0
-    - lpips==0.1.4
-    - markdown==3.3.6
-    - markupsafe==2.1.1
-    - matplotlib-inline==0.1.3
-    - mistune==0.8.4
-    - multidict==6.0.2
-    - mypy-extensions==0.4.3
-    - nbclient==0.5.13
-    - nbconvert==6.4.5
-    - nbformat==5.3.0
-    - nest-asyncio==1.5.5
-    - networkx==2.7.1
-    - notebook==6.4.10
-    - oauthlib==3.2.0
-    - omegaconf==2.1.1
-    - opencv-python==4.1.2.30
-    - opencv-python-headless==4.5.5.64
-    - pandas==1.4.2
-    - pandocfilters==1.5.0
-    - parso==0.8.3
-    - pathspec==0.9.0
-    - pexpect==4.8.0
-    - pickleshare==0.7.5
-    - platformdirs==2.5.2
-    - prometheus-client==0.13.1
-    - prompt-toolkit==3.0.29
-    - protobuf==3.20.0
-    - psutil==5.9.0
-    - ptyprocess==0.7.0
-    - pudb==2019.2
-    - pure-eval==0.2.2
-    - pyarrow==7.0.0
-    - pyasn1==0.4.8
-    - pyasn1-modules==0.2.8
-    - pycparser==2.21
-    - pydeck==0.7.1
-    - pydeprecate==0.3.1
-    - pygments==2.11.2
-    - pympler==1.0.1
-    - pyrsistent==0.18.1
-    - pytorch-lightning==1.4.2
-    - pytz==2022.1
-    - pytz-deprecation-shim==0.1.0.post0
-    - pywavelets==1.3.0
-    - pyyaml==6.0
-    - pyzmq==22.3.0
-    - regex==2022.3.15
-    - requests==2.27.1
-    - requests-oauthlib==1.3.1
-    - rsa==4.8
-    - sacremoses==0.0.49
-    - scikit-image==0.19.2
-    - scipy==1.8.0
-    - semver==2.13.0
-    - send2trash==1.8.0
-    - smmap==5.0.0
-    - soupsieve==2.3.1
-    - stack-data==0.2.0
-    - streamlit==1.8.1
-    - tensorboard==2.8.0
-    - tensorboard-data-server==0.6.1
-    - tensorboard-plugin-wit==1.8.1
-    - terminado==0.13.3
-    - test-tube==0.7.5
-    - testpath==0.6.0
-    - tifffile==2022.3.25
-    - tokenizers==0.10.3
-    - toml==0.10.2
-    - tomli==2.0.1
-    - toolz==0.11.2
-    - torch-fidelity==0.3.0
-    - torchmetrics==0.7.3
-    - tqdm==4.64.0
-    - traitlets==5.1.1
-    - transformers==4.3.1
-    - tzdata==2022.1
-    - tzlocal==4.2
-    - urllib3==1.26.9
-    - urwid==2.1.2
-    - validators==0.18.2
-    - watchdog==2.1.7
-    - wcwidth==0.2.5
-    - webencodings==0.5.1
-    - werkzeug==2.1.1
-    - widgetsnbextension==3.6.0
-    - yarl==1.7.2
-    - zipp==3.8.0
-    - -e git+https://github.com/CompVis/taming-transformers.git@master#egg=taming-transformers
-    - -e git+https://github.com/openai/CLIP.git@main#egg=clip
-    - -e .
+      - absl-py==1.0.0
+      - aiohttp==3.8.1
+      - aiosignal==1.2.0
+      - albumentations==0.4.3
+      - altair==4.2.0
+      - antlr4-python3-runtime==4.8
+      - argon2-cffi==21.3.0
+      - argon2-cffi-bindings==21.2.0
+      - asttokens==2.0.5
+      - async-timeout==4.0.2
+      - attrs==21.4.0
+      - backcall==0.2.0
+      - backports-zoneinfo==0.2.1
+      - beautifulsoup4==4.10.0
+      - black==22.3.0
+      - bleach==4.1.0
+      - blinker==1.4
+      - cachetools==5.0.0
+      - charset-normalizer==2.0.12
+      - dataclasses==0.6
+      - debugpy==1.6.0
+      - decorator==5.1.1
+      - defusedxml==0.7.1
+      - diffusers==0.12.1
+      - einops==0.3.0
+      - entrypoints==0.4
+      - executing==0.8.3
+      - fastjsonschema==2.15.3
+      - filelock==3.6.0
+      - frozenlist==1.3.0
+      - fsspec==2023.5.0
+      - ftfy==6.1.1
+      - future==0.18.2
+      - gitdb==4.0.9
+      - gitpython==3.1.27
+      - google-auth==2.6.2
+      - google-auth-oauthlib==0.4.6
+      - grpcio==1.44.0
+      - huggingface-hub==0.15.1
+      - idna==3.3
+      - imageio==2.9.0
+      - imageio-ffmpeg==0.4.2
+      - imgaug==0.2.6
+      - importlib-metadata==4.11.3
+      - importlib-resources==5.6.0
+      - ipykernel==6.12.1
+      - ipython==8.2.0
+      - ipython-genutils==0.2.0
+      - ipywidgets==7.7.0
+      - jedi==0.18.1
+      - jinja2==3.1.1
+      - joblib==1.1.0
+      - jsonschema==4.4.0
+      - jupyter-client==7.2.1
+      - jupyter-core==4.9.2
+      - jupyterlab-pygments==0.1.2
+      - jupyterlab-widgets==1.1.0
+      - lpips==0.1.4
+      - markdown==3.3.6
+      - markupsafe==2.1.1
+      - matplotlib-inline==0.1.3
+      - mistune==0.8.4
+      - multidict==6.0.2
+      - mypy-extensions==0.4.3
+      - nbclient==0.5.13
+      - nbconvert==6.4.5
+      - nbformat==5.3.0
+      - nest-asyncio==1.5.5
+      - networkx==2.7.1
+      - notebook==6.4.10
+      - numpy==1.24.3
+      - oauthlib==3.2.0
+      - omegaconf==2.1.1
+      - opencv-python==4.1.2.30
+      - opencv-python-headless==4.5.5.64
+      - packaging==21.3
+      - pandas==1.4.2
+      - pandocfilters==1.5.0
+      - parso==0.8.3
+      - pathspec==0.9.0
+      - pexpect==4.8.0
+      - pickleshare==0.7.5
+      - platformdirs==2.5.2
+      - prometheus-client==0.13.1
+      - prompt-toolkit==3.0.29
+      - protobuf==3.20.0
+      - psutil==5.9.0
+      - ptyprocess==0.7.0
+      - pudb==2019.2
+      - pure-eval==0.2.2
+      - pyarrow==7.0.0
+      - pyasn1==0.4.8
+      - pyasn1-modules==0.2.8
+      - pydeck==0.7.1
+      - pydeprecate==0.3.1
+      - pygments==2.11.2
+      - pympler==1.0.1
+      - pyrsistent==0.18.1
+      - pytorch-lightning==1.4.2
+      - pytz==2022.1
+      - pytz-deprecation-shim==0.1.0.post0
+      - pywavelets==1.3.0
+      - pyyaml==6.0
+      - pyzmq==22.3.0
+      - regex==2023.6.3
+      - requests==2.31.0
+      - requests-oauthlib==1.3.1
+      - rsa==4.8
+      - sacremoses==0.0.49
+      - scikit-image==0.19.2
+      - scipy==1.8.0
+      - semver==2.13.0
+      - send2trash==1.8.0
+      - smmap==5.0.0
+      - soupsieve==2.3.1
+      - stack-data==0.2.0
+      - streamlit==1.8.1
+      - tensorboard==2.8.0
+      - tensorboard-data-server==0.6.1
+      - tensorboard-plugin-wit==1.8.1
+      - terminado==0.13.3
+      - test-tube==0.7.5
+      - testpath==0.6.0
+      - tifffile==2022.3.25
+      - toml==0.10.2
+      - tomli==2.0.1
+      - toolz==0.11.2
+      - torch-fidelity==0.3.0
+      - torchmetrics==0.7.3
+      - tqdm==4.64.0
+      - traitlets==5.1.1
+      - transformers==4.29.2
+      - typing-extensions==4.6.3
+      - tzdata==2022.1
+      - tzlocal==4.2
+      - urllib3==2.0.3
+      - urwid==2.1.2
+      - validators==0.18.2
+      - watchdog==2.1.7
+      - wcwidth==0.2.5
+      - webencodings==0.5.1
+      - werkzeug==2.1.1
+      - widgetsnbextension==3.6.0
+      - yarl==1.7.2
+      - zipp==3.8.0
+      - -e git+https://github.com/CompVis/taming-transformers.git@master#egg=taming-transformers
+      - -e git+https://github.com/openai/CLIP.git@main#egg=clip
+      - -e .

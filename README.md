@@ -55,7 +55,15 @@ If the above link is broken, you can use this [Google drive mirror](https://driv
 
 # Usage
 
-## Step 1 - Generate initial predictions
+## New - Stable Diffusion Implementation
+You can use the newer Stable Diffusion implementation based on [Diffusers](https://github.com/huggingface/diffusers) library in the following way:
+```bash
+python scripts/text_editing_stable_diffusion.py --prompt "a stone" --init_image "inputs/img.png" --mask "inputs/mask.png"
+```
+
+## Old - Latent Diffusion Model Implementation
+You can use the old implementation based on Latent Diffusion Model (LDM) which may require two steps:
+### Step 1 - Generate initial predictions
 ```bash
 python scripts/text_editing.py --prompt "a pink yarn ball" --init_image "inputs/img.png" --mask "inputs/mask.png"
 ```
@@ -64,7 +72,7 @@ The predictions will be saved in `outputs/edit_results/samples`.
 
 You can use a larger batch size by specifying `--n_samples` to the maximum number that saturates your GPU.
 
-## Step 2 (optional) - Reconstruct the original background
+### Step 2 (optional) - Reconstruct the original background
 If you want to reconstruct the original image background, you can run the following:
 ```bash
 python scripts/reconstruct.py --init_image "inputs/img.png" --mask "inputs/mask.png" --selected_indices 0 1
@@ -73,7 +81,7 @@ python scripts/reconstruct.py --init_image "inputs/img.png" --mask "inputs/mask.
 You can choose the specific image indices that you want to reconstruct. The results will be saved in `outputs/edit_results/samples/reconstructed_optimization`.
 
 # Citation
-If you find this useful for your research, please cite the following:
+If you find this project useful for your research, please cite the following:
 ```bibtex
 @article{avrahami2022blended_latent,
         title={Blended Latent Diffusion},
