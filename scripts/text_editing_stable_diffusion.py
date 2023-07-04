@@ -28,10 +28,22 @@ class BlendedLatnetDiffusion:
             default="stabilityai/stable-diffusion-2-1-base",
             help="The path to the HuggingFace model",
         )
-        parser.add_argument("--batch_size", type=int, default=4, help="The number of images to generate")
-        parser.add_argument("--blending_start_percentage", type=float, default=0.25, help="The diffusion steps percentage to jump")
+        parser.add_argument(
+            "--batch_size", type=int, default=4, help="The number of images to generate"
+        )
+        parser.add_argument(
+            "--blending_start_percentage",
+            type=float,
+            default=0.25,
+            help="The diffusion steps percentage to jump",
+        )
         parser.add_argument("--device", type=str, default="cuda")
-        parser.add_argument("--output_path", type=str, default="outputs/res.jpg", help="The destination output path")
+        parser.add_argument(
+            "--output_path",
+            type=str,
+            default="outputs/res.jpg",
+            help="The destination output path",
+        )
 
         self.args = parser.parse_args()
 
@@ -67,6 +79,7 @@ class BlendedLatnetDiffusion:
         batch_size = len(prompts)
 
         image = Image.open(image_path)
+        image = image.resize((height, width), Image.BILINEAR)
         image = np.array(image)[:, :, :3]
         source_latents = self._image2latent(image)
         latent_mask, org_mask = self._read_mask(mask_path)
