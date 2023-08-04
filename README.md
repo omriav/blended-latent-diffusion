@@ -83,11 +83,23 @@ You can choose the specific image indices that you want to reconstruct. The resu
 # Citation
 If you find this project useful for your research, please cite the following:
 ```bibtex
-@article{avrahami2022blended_latent,
-        title={Blended Latent Diffusion},
-        author={Avrahami, Omri and Fried, Ohad and Lischinski, Dani},
-        journal={arXiv preprint arXiv:2206.02779},
-        year={2022}
+@article{avrahami2023blendedlatent,
+        author = {Avrahami, Omri and Fried, Ohad and Lischinski, Dani},
+        title = {Blended Latent Diffusion},
+        year = {2023},
+        issue_date = {August 2023},
+        publisher = {Association for Computing Machinery},
+        address = {New York, NY, USA},
+        volume = {42},
+        number = {4},
+        issn = {0730-0301},
+        url = {https://doi.org/10.1145/3592450},
+        doi = {10.1145/3592450},
+        journal = {ACM Trans. Graph.},
+        month = {jul},
+        articleno = {149},
+        numpages = {11},
+        keywords = {zero-shot text-driven local image editing}
 }
 
 @InProceedings{Avrahami_2022_CVPR,
