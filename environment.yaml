@@ -117,7 +117,6 @@ dependencies:
       - debugpy==1.6.0
       - decorator==5.1.1
       - defusedxml==0.7.1
-      - diffusers==0.12.1
       - einops==0.3.0
       - entrypoints==0.4
       - executing==0.8.3

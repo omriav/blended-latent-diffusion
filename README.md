@@ -2,7 +2,7 @@
 <a href="https://omriavrahami.com/blended-latent-diffusion-page/"><img src="https://img.shields.io/static/v1?label=Project&message=Website&color=blue"></a> 
 <a href="https://arxiv.org/abs/2206.02779"><img src="https://img.shields.io/badge/arXiv-2206.02779-b31b1b.svg"></a>
 <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg"></a>
-<a href="https://pytorch.org/"><img src="https://img.shields.io/badge/PyTorch->=1.7.0-Red?logo=pytorch"></a>
+<a href="https://pytorch.org/"><img src="https://img.shields.io/badge/PyTorch->=2.1.0-Red?logo=pytorch"></a>
 
 <a href="https://omriavrahami.com/blended-latent-diffusion-page/"><img src="docs/teaser.png" /></a>
 
@@ -41,31 +41,45 @@
 # Installation
 Install the conda virtual environment:
 ```bash
-conda env create -f environment.yaml
-conda activate ldm
+$ conda env create -f environment.yaml
+$ conda activate ldm
 ```
 
-Download the pre-trained weights (5.7GB):
+# Usage
+
+## New :fire: - Stable Diffusion Implementation
+You can use the newer Stable Diffusion implementation based on [Diffusers](https://github.com/huggingface/diffusers) library.
+For that, you need to install PyTorch 2.1 and Diffusers via the following commands:
 ```bash
-mkdir -p models/ldm/text2img-large/
-wget -O models/ldm/text2img-large/model.ckpt https://ommer-lab.com/files/latent-diffusion/nitro/txt2img-f8-large/model.ckpt
+$ conda install pytorch==2.1.0 torchvision==0.16.0  pytorch-cuda=11.8 -c pytorch -c nvidia
+$ pip install -U diffusers==0.19.3
+```
+
+* For using Stable Diffusion XL (requires a stronger GPU), use the following script:
+
+```bash
+$ python scripts/text_editing_SDXL.py --prompt "a stone" --init_image "inputs/img.png" --mask "inputs/mask.png"
+```
+You can use smaller `--batch_size` in order to save GPU memory.
+
+* For using Stable Diffusion v2.1, use the following script:
+```bash
+$ python scripts/text_editing_SD2.py --prompt "a stone" --init_image "inputs/img.png" --mask "inputs/mask.png"
+```
+
+## Old - Latent Diffusion Model Implementation
+For using the old implementation, based on the Latent Diffusion Model (LDM), you need first to download the pre-trained weights (5.7GB):
+```bash
+$ mkdir -p models/ldm/text2img-large/
+$ wget -O models/ldm/text2img-large/model.ckpt https://ommer-lab.com/files/latent-diffusion/nitro/txt2img-f8-large/model.ckpt
 ```
 
 If the above link is broken, you can use this [Google drive mirror](https://drive.google.com/file/d/1wcOK4co3EnbFAL6UpX1SVChMBKAzkMOx/view?usp=sharing).
 
-# Usage
-
-## New - Stable Diffusion Implementation
-You can use the newer Stable Diffusion implementation based on [Diffusers](https://github.com/huggingface/diffusers) library in the following way:
-```bash
-python scripts/text_editing_stable_diffusion.py --prompt "a stone" --init_image "inputs/img.png" --mask "inputs/mask.png"
-```
-
-## Old - Latent Diffusion Model Implementation
-You can use the old implementation based on Latent Diffusion Model (LDM) which may require two steps:
+Then, editing the image may require two steps:
 ### Step 1 - Generate initial predictions
 ```bash
-python scripts/text_editing.py --prompt "a pink yarn ball" --init_image "inputs/img.png" --mask "inputs/mask.png"
+$ python scripts/text_editing_LDM.py --prompt "a pink yarn ball" --init_image "inputs/img.png" --mask "inputs/mask.png"
 ```
 
 The predictions will be saved in `outputs/edit_results/samples`.
@@ -75,7 +89,7 @@ You can use a larger batch size by specifying `--n_samples` to the maximum numbe
 ### Step 2 (optional) - Reconstruct the original background
 If you want to reconstruct the original image background, you can run the following:
 ```bash
-python scripts/reconstruct.py --init_image "inputs/img.png" --mask "inputs/mask.png" --selected_indices 0 1
+$ python scripts/reconstruct.py --init_image "inputs/img.png" --mask "inputs/mask.png" --selected_indices 0 1
 ```
 
 You can choose the specific image indices that you want to reconstruct. The results will be saved in `outputs/edit_results/samples/reconstructed_optimization`.
