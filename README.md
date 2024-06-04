@@ -74,7 +74,7 @@ $ mkdir -p models/ldm/text2img-large/
 $ wget -O models/ldm/text2img-large/model.ckpt https://ommer-lab.com/files/latent-diffusion/nitro/txt2img-f8-large/model.ckpt
 ```
 
-If the above link is broken, you can use this [Google drive mirror](https://drive.google.com/file/d/1wcOK4co3EnbFAL6UpX1SVChMBKAzkMOx/view?usp=sharing).
+If the above link is broken, you can use this [mirror link](https://huggingface.co/omriav/blended-latent-diffusion-ldm/resolve/main/model.ckpt?download=true).
 
 Then, editing the image may require two steps:
 ### Step 1 - Generate initial predictions
